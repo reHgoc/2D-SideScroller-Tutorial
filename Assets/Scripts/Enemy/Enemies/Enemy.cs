@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SmallEnemy : Enemies
+public class Enemy : AbstractEnemies
 {
 
     public override float EnemyHealth 
@@ -19,7 +19,7 @@ public class SmallEnemy : Enemies
         set { _enemySpeed = value; } 
     }
 
-    public override int EnemySize 
+    public override float EnemySize 
     {
         get { return _enemySize; }
         set { _enemySize = value; }
@@ -37,18 +37,23 @@ public class SmallEnemy : Enemies
         set { _enemyGameObject = value; }
     }
 
-    public override void Init()
+    public override void Init(float health, float shield, float size, float speed, GameObject gameObject)
     {
-        _enemyHealth = 100f;
-        _enemyShield = 100f;
-        _enemySize = 1;
-        _enemySpeed = 3f;
+        _enemyHealth = health;
+        _enemyShield = shield;
+        _enemySize =   size;
+        _enemySpeed =  speed;
+        _enemyGameObject = gameObject;
+
+        _enemyGameObject.transform.localScale = new Vector3(_enemySize,
+            _enemySize,
+            _enemySize);
        
     }
 
     public override void Shoot()
     {
-        
+        return;
     }
 
     public override float SelfDamage()
@@ -66,7 +71,7 @@ public class SmallEnemy : Enemies
     public override void Death()
     {
        
-        EnemyGameObject.SetActive(false);
+        //EnemyGameObject.SetActive(false);
     }
 
 

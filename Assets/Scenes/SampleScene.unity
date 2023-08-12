@@ -362,12 +362,12 @@ Camera:
   serializedVersion: 2
   m_ClearFlags: 2
   m_BackGroundColor: {r: 0.09411765, g: 0.105882354, b: 0.09803922, a: 0}
-  m_projectionMatrixMode: 2
-  m_GateFitMode: 2
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 1
   m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 39.250233
+  m_FocalLength: 14.3010435
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -376,9 +376,9 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 2000
-  field of view: 34
+  field of view: 80
   orthographic: 0
-  orthographic size: 5
+  orthographic size: 200
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -699,7 +699,7 @@ GameObject:
   - component: {fileID: 1538735130}
   - component: {fileID: 1538735129}
   m_Layer: 0
-  m_Name: EnemyManager
+  m_Name: Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -717,6 +717,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 631c7537c7508444facbc6cb9581678f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SpawnObject:
+  - Name: Large Enemy
+    Prefab: {fileID: 7691857867126617283, guid: 4197394a97bfb014ba7147d188ea4ce2, type: 3}
+    InitialPoolSize: 3
+  - Name: Medium Enemy
+    Prefab: {fileID: 7691857867126617283, guid: 02d61d168ef73fd4a86d203e460c1a0b, type: 3}
+    InitialPoolSize: 5
+  - Name: Small Enemy
+    Prefab: {fileID: 7691857867126617283, guid: a65a389ea9dd49a49b7acf529c9acbd6, type: 3}
+    InitialPoolSize: 10
 --- !u!4 &1538735130
 Transform:
   m_ObjectHideFlags: 0

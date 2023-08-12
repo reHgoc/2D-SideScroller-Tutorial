@@ -8,12 +8,12 @@ public class PoolingManager<T>
     private T _prefab;
     private List<T> _objects;
 
-    public PoolingManager(T prefab, List<T> objects)
+    public PoolingManager(T prefab, int count)
     {
         _prefab = prefab;
-        _objects = objects;
+        _objects = new List<T>();
 
-        for(int i = 0; i < _objects.Count; i++)
+        for(int i = 0; i < count; i++)
         {
             var obj = GameObject.Instantiate(_prefab);
             obj.gameObject.SetActive(false);
