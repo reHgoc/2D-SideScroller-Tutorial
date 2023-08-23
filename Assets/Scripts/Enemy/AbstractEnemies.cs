@@ -23,9 +23,7 @@ public abstract class AbstractEnemies
 
     public abstract void Init(float health, float shield, float size, float speed, GameObject enemyGameObject);
     public abstract void Shoot();
-    public abstract void Death();
-    public abstract float TakeDamage();
-    public abstract float SelfDamage();
+    public abstract float TakeDamage(float damage);
     
 
 

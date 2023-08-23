@@ -55,23 +55,11 @@ public class Enemy : AbstractEnemies
     {
         return;
     }
-
-    public override float SelfDamage()
-    {
-        float damage = 5f;
-        return damage;
-    }
     
-    public override float TakeDamage()
+    public override float TakeDamage(float damage)
     {
-        float damage = 5f;
-        return damage;
-    }
-
-    public override void Death()
-    {
-       
-        //EnemyGameObject.SetActive(false);
+        
+        return _enemyHealth -= damage;
     }
 
 

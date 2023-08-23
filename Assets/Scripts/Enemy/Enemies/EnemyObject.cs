@@ -2,12 +2,18 @@ using UnityEngine;
 
 public class EnemyObject : MonoBehaviour
 {
+    public static PoolingManager<EnemyObject> EnemyPool;
+
+    Spawner _spawner;
+    Enemy _enemyComponent;
+    Player _player;
+
     [SerializeField] private float _speed;
     [SerializeField] private float _health;
     [SerializeField] private float _shield;
     [SerializeField] private float _size;
 
-    Enemy _enemyComponent;
+    float _enemyDeadZone;
 
     Vector3 _spawnPosition;
 
@@ -25,12 +31,46 @@ public class EnemyObject : MonoBehaviour
             0f);
         transform.position = _spawnPosition;
 
+        _enemyDeadZone = -Camera.main.rect.height * 2f - this.GetComponent<SpriteRenderer>().size.y;
+
+    }
+
+    private void Start()
+    {
+        _player = FindObjectOfType<Player>().GetComponent<Player>();
+        _spawner = FindObjectOfType<Spawner>();
     }
 
     private void Update()
     {
         transform.position -= Vector3.up * _enemyComponent.EnemySpeed * Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.Space)) _enemyComponent.EnemySpeed += 2f;
+        if(transform.position.y <= _enemyDeadZone)
+        {
+            Death();
+
+        }
+    }
+   
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject == _player.gameObject)
+        {
+            Death();
+        }
+        if (collision.gameObject.GetComponent<Bullet>())
+        {
+           _health = _enemyComponent.TakeDamage(collision.gameObject.GetComponent<Bullet>().Damage);
+            if (_health <= 0 ) 
+            {
+                Death();
+            }
+        }
+    }
+
+    public void Death()
+    {
+        _spawner.ReleaseObject<EnemyObject>(EnemyPool, this);
+        transform.position = _spawnPosition;
     }
 }
