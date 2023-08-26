@@ -21,7 +21,8 @@ public class EnemyObject : MonoBehaviour
     {
         _enemyComponent = new Enemy();
         _enemyComponent.Init(_health, _shield, _size, _speed, this.gameObject);
-        
+        _enemyComponent.EnemySpriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
+
         float _enemyHeight = _enemyComponent.EnemyGameObject.transform.localScale.y;
         float _enemyWidth =  _enemyComponent.EnemyGameObject.transform.localScale.x;
 
@@ -60,8 +61,8 @@ public class EnemyObject : MonoBehaviour
         }
         if (collision.gameObject.GetComponent<Bullet>())
         {
-           _health = _enemyComponent.TakeDamage(collision.gameObject.GetComponent<Bullet>().Damage);
-            if (_health <= 0 ) 
+            _enemyComponent.EnemyHealth = _enemyComponent.TakeDamage(collision.gameObject.GetComponent<Bullet>().Damage);
+            if (_enemyComponent.EnemyHealth <= 0 ) 
             {
                 Death();
             }
@@ -71,6 +72,8 @@ public class EnemyObject : MonoBehaviour
     public void Death()
     {
         _spawner.ReleaseObject<EnemyObject>(EnemyPool, this);
+        _enemyComponent.EnemyHealth = _health;
+        print(_enemyComponent.EnemyHealth);
         transform.position = _spawnPosition;
     }
 }

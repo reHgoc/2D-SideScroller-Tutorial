@@ -44,12 +44,12 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
+        
         transform.position += Vector3.up * _speed * Time.deltaTime;
 
         if (transform.position.y >= _bulletDeadZone)
         {
-            _spawner.ReleaseObject<Bullet>(BulletPool, this);
-            transform.position = _spawnPosition.position;
+            DestroyBullet();
         }
     }
 
@@ -57,7 +57,13 @@ public class Bullet : MonoBehaviour
     {
         if (enemyColl.gameObject.GetComponent<EnemyObject>())
         {
-            _spawner.ReleaseObject<Bullet>(BulletPool, this);
+            DestroyBullet();
         }
+    }
+
+    private void DestroyBullet()
+    {
+        _spawner.ReleaseObject<Bullet>(BulletPool, this);
+        transform.position = _spawnPosition.position;
     }
 }

@@ -58,7 +58,10 @@ public class Enemy : AbstractEnemies
     
     public override float TakeDamage(float damage)
     {
-        
+        Color color = Color.white;
+
+        EnemySpriteRenderer.color = Color.Lerp(Color.red, Color.blue, .5f);
+        EnemySpriteRenderer.color = color;
         return _enemyHealth -= damage;
     }
 
