@@ -2,13 +2,20 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField]private float _speed;
+    [SerializeField] private float _speed;
+    [SerializeField] private float _health;
 
     private float _mousePositionX;
 
     public float Speed 
     { 
         get { return _speed; } 
+    }
+
+    public float Health
+    {
+        get { return _health; }
+        set { _health = value; }
     }
 
     private void Update()
