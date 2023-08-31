@@ -1,10 +1,8 @@
 
-public class BonusHP : AbstractBonus
+public class BonusHP : BonusChanceSystem, IBonus
 {
-    private float _amount;
-
-    public override void BonusEffect()
+    public void BonusEffect()
     {
-        Player.FindObjectOfType<Player>().Health += _amount;
+        _player.Health += _amount;
     }
 }

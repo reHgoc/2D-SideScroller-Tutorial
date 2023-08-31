@@ -73,7 +73,6 @@ public class EnemyObject : MonoBehaviour
     {
         _spawner.ReleaseObject<EnemyObject>(EnemyPool, this);
         _enemyComponent.EnemyHealth = _health;
-        print(_enemyComponent.EnemyHealth);
         transform.position = _spawnPosition;
     }
 }

@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -18,6 +19,16 @@ public class Player : MonoBehaviour
         set { _health = value; }
     }
 
+    public void Death()
+    {
+        //TODO: DEATH made methods across pool, or just setactive
+    }
+
+    public void ShieldEffect()
+    {
+        //TODO: For some second shield effect
+    }
+
     private void Update()
     {
 
@@ -31,15 +42,11 @@ public class Player : MonoBehaviour
         {
             float newPosition = Input.mousePosition.x - _mousePositionX;
 
-            transform.position += new Vector3(newPosition, 0f, 0f) * Time.deltaTime * _speed;
-            Mathf.Clamp(transform.position.x, -3.5f, 3.5f);
-            transform.position = new Vector3(
-                Mathf.Clamp(transform.position.x, -3.5f, 3.5f),
-                transform.position.y,
-                transform.position.z);
+            Vector3 newPos = transform.position + new Vector3(newPosition, 0f, 0f) * Time.deltaTime * _speed;
+            newPos.x = Mathf.Clamp(newPos.x, -3.5f, 3.5f);
+            transform.position = newPos;
 
             _mousePositionX = Input.mousePosition.x;
         }
     }
-
 }
