@@ -3,7 +3,6 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public static PoolingManager<Bullet> BulletPool;
-    public static EnemyObject Enemy;
 
     [SerializeField] private float _speed;
     [SerializeField] private float _damage;

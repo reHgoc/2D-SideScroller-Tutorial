@@ -55,15 +55,17 @@ public class Weapon : MonoBehaviour
         {
             Shoot(_bulletSinglePool, _bulletSingle.SpawnRate);
         }
-        _bulletSingle.Prefab.transform.position = this.transform.position;
+        
 
     }
 
     private void Shoot(PoolingManager<Bullet> pool, float rate)
     {
+        
         _spawner.Spawn<Bullet>(pool);
         _shootRate = rate;
-        
+        _bulletSingle.Prefab.transform.position = this.transform.position;
+
     }
 
     private IEnumerator Reload()

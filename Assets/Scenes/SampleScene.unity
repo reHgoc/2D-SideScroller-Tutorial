@@ -651,7 +651,7 @@ MonoBehaviour:
   _bulletSingle:
     Prefab: {fileID: 3622180834811925081, guid: 91e493ca88bb8dd4887ab04b5b661cb1, type: 3}
     InitialPoolSize: 15
-    SpawnRate: 0.2
+    SpawnRate: 0.15
 --- !u!1 &1313797925
 GameObject:
   m_ObjectHideFlags: 0
@@ -865,6 +865,18 @@ MonoBehaviour:
     Prefab: {fileID: 7691857867126617283, guid: 4197394a97bfb014ba7147d188ea4ce2, type: 3}
     InitialPoolSize: 3
     SpawnRate: 10
+  _bonusHeart:
+    Prefab: {fileID: 5678466331002555370, guid: 3a6cc6e299dd7c4408bebf82ce541dd8, type: 3}
+    InitialPoolSize: 0
+    SpawnRate: 0
+  _bonusShield:
+    Prefab: {fileID: 504344679340272191, guid: a33cbbcefd8adfa4fb1f3815f85123d7, type: 3}
+    InitialPoolSize: 0
+    SpawnRate: 0
+  _bonusDeath:
+    Prefab: {fileID: 2088017962176810178, guid: 95d34f4da34fdb04ea1879879e38fb68, type: 3}
+    InitialPoolSize: 0
+    SpawnRate: 0
 --- !u!4 &1538735130
 Transform:
   m_ObjectHideFlags: 0

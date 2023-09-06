@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class BonusChanceSystem : MonoBehaviour 
 {
+    public static PoolingManager<Bullet> BonusPool;
 
     [SerializeField] protected float _amount;
     [SerializeField] protected float _probabilitty;
@@ -12,6 +13,7 @@ public class BonusChanceSystem : MonoBehaviour
     private void Start()
     {
         _player = FindObjectOfType<Player>().GetComponent<Player>();
+
     }
 
     public float Probabilitty 
@@ -25,4 +27,16 @@ public class BonusChanceSystem : MonoBehaviour
         _ratioExtern = Random.Range(0, value);
         return _ratioExtern;
     }
+
+    public void Dead()
+    {
+
+    }
+
+    private void FixedUpdate()
+    {
+        transform.position -= Vector3.up * _player.Speed * Time.deltaTime;
+    }
+
+
 }
